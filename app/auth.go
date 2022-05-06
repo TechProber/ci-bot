@@ -9,7 +9,7 @@ import (
 )
 
 func ClientConnection() *ClientService {
-	token := "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"
+	token := ""
 
 	ctx := context.Background()
 	tokenService := oauth2.StaticTokenSource(
