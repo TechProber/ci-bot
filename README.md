@@ -25,7 +25,7 @@ CopyRight 2022 TechProber. All rights reserved.
 
 Maintainer: [ Kevin Yu (@yqlbu) ](https://github.com/yqlbu)
 
-CI bot acts like an actual GitHub user to interacts with end-user across multiple GitHub Actions (PR Checks, CI Status Monitoring, and more)
+CI bot acts like an actual GitHub user to interact with end-users across multiple GitHub Actions (PR Checks, CI Status Monitoring, and more)
 
 ## How it works
 
