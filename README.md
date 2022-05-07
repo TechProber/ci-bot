@@ -31,4 +31,6 @@ CI bot acts like an actual GitHub user to interact with end-users across multipl
 
 ## References
 
+- [github - bradleyfalzon/ghinstallation](https://github.com/bradleyfalzon/ghinstallation)
 - [Smee.io - Webhook payload delivery service](https://smee.io)
+- [Go で GitHub App (Bot) を作る](https://qiita.com/frozenbonito/items/cf21d0be8f06ddcaf54a)
