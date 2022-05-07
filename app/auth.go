@@ -2,27 +2,32 @@ package main
 
 import (
 	"context"
+	"log"
+	"net/http"
 	"net/url"
+	"time"
 
+	"github.com/bradleyfalzon/ghinstallation"
 	"github.com/google/go-github/github"
-	"golang.org/x/oauth2"
 )
 
 func ClientConnection() *ClientService {
-	token := ""
+	transport := http.DefaultTransport
+	install, err := ghinstallation.NewKeyFromFile(transport, AppID, InstallationID, GetKey())
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	ctx := context.Background()
-	tokenService := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: token},
-	)
-	tokenClient := oauth2.NewClient(ctx, tokenService)
+	client := github.NewClient(&http.Client{
+		Transport: install,
+		Timeout:   5 * time.Second,
+	})
 
-	client := github.NewClient(tokenClient)
 	client.BaseURL, _ = url.Parse(ApiURL)
 
 	return &ClientService{
 		Context: ctx,
 		Client:  client,
 	}
-
 }

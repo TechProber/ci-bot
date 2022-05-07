@@ -5,8 +5,20 @@ import (
 	"log"
 )
 
+func (c *ClientService) GetRepositories() string {
+	result, _, err := c.Client.Repositories.List(c.Context, "", nil)
+	if err != nil {
+		log.Fatalf("Error occurred while fetching API data %v\n", err)
+	}
+
+	bytes, _ := json.Marshal(result)
+
+	return string(bytes)
+
+}
+
 func (c *ClientService) GetRepoInfo(repository string) string {
-	result, _, err := c.Client.Repositories.Get(c.Context, "TechProber", repository)
+	result, _, err := c.Client.Repositories.Get(c.Context, RepoOwner, repository)
 	if err != nil {
 		log.Fatalf("Error occurred while fetching API data %v\n", err)
 	}
