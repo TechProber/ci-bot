@@ -33,6 +33,13 @@ publish: login build publish
 	@sudo nerdctl push \
 		$(REGISTRY_URL)/$(REGISTRY_USERNAME)/$(IMAGE_NAME):$(IMAGE_TAG) \
 
+.PHONY: run
+run:
+	@echo "==> Run application locally"
+	@sudo nerdctl run --rm -it \
+		--name ci-bot \
+		$(REGISTRY_URL)/$(REGISTRY_USERNAME)/$(IMAGE_NAME):$(IMAGE_TAG)
+
 .PHONY: help
 help:
 	$(info ${HELP_MESSAGE})
