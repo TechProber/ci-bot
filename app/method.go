@@ -11,7 +11,7 @@ func (c *ClientService) GetRepoInfo(repository string) string {
 		log.Fatalf("Error occurred while fetching API data %v\n", err)
 	}
 
-	bytes, _ := json.Marshal(Repository{
+	bytes, _ := json.Marshal(&Repository{
 		FullName:    *result.FullName,
 		Description: *result.Description,
 		HTMLURL:     *result.HTMLURL,
@@ -28,7 +28,7 @@ func (c *ClientService) GetPullRequest(repository string, number int) string {
 		log.Fatalf("Error occurred while fetching API data %v\n", err)
 	}
 
-	bytes, _ := json.Marshal(PullRequest{
+	bytes, _ := json.Marshal(&PullRequest{
 		ID:        *result.ID,
 		Number:    *result.Number,
 		State:     *result.State,
