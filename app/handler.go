@@ -18,7 +18,7 @@ func JsonPrettyPrint(in string) string {
 func main() {
 	c := ClientConnection()
 	// result := c.GetRepoInfo("ci-bot")
-	result := c.GetPullRequest("cloud-estate", 61)
+	result := c.GetPullRequest("cloud-estate", 110)
 	output := JsonPrettyPrint(result)
 	log.Println(output)
 }

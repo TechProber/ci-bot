@@ -26,5 +26,4 @@ type PullRequest struct {
 	Title     string         `json:"title,omitempty"`
 	URL       string         `json:"url,omitempty"`
 	Assignees []*github.User `json:"assignees,omitempty"`
-	Reviewers []*github.User `json:"reviewers,omitempty"`
 }

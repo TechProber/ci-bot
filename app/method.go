@@ -35,7 +35,6 @@ func (c *ClientService) GetPullRequest(repository string, number int) string {
 		Title:     *result.Title,
 		URL:       *result.URL,
 		Assignees: *&result.Assignees,
-		Reviewers: *&result.RequestedReviewers,
 	})
 
 	return string(bytes)
