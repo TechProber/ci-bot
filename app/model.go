@@ -18,3 +18,13 @@ type Repository struct {
 	URL         string           `json:"url"`
 	UpdatedAt   github.Timestamp `json:"updatedAt"`
 }
+
+type PullRequest struct {
+	ID        int64          `json:"id,omitempty"`
+	Number    int            `json:"number,omitempty"`
+	State     string         `json:"state,omitempty"`
+	Title     string         `json:"title,omitempty"`
+	URL       string         `json:"url,omitempty"`
+	Assignees []*github.User `json:"assignees,omitempty"`
+	Reviewers []*github.User `json:"reviewers,omitempty"`
+}
