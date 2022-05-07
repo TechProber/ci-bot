@@ -9,16 +9,20 @@ WORKDIR /workspace
 COPY go.mod go.sum ./
 COPY app/ ./
 
+ENV GOOS linux
+ENV GOARCH amd64
+ENV CGO_ENABLED 0
+
 RUN go install
-RUN go build -o app . && \
-    cp ./app /${APP_DIR} && \
-    rm -rf /workspace
+RUN go build -o app .
 
 ### Production Stage ###
 
-FROM alpine:latest
+FROM alpine:latest as prod-stage
 
-COPY --from=build-stage ${APP_DIR}/app ${APP_DIR}
+ARG APP_DIR
 
-WORKDIR /{APP_DIR}
+COPY --from=build-stage /workspace/app /${APP_DIR}/app
+
+WORKDIR ${APP_DIR}
 CMD [ "/app" ]
