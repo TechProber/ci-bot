@@ -25,4 +25,4 @@ ARG APP_DIR
 COPY --from=build-stage /workspace/app /${APP_DIR}/app
 
 WORKDIR ${APP_DIR}
-CMD [ "/app" ]
+CMD [ "./app" ]
